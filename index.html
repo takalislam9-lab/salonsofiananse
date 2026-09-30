@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salón Sofía | Uñas & Estética · San Sebastián de los Reyes</title>
+<meta name="description" content="Salón Sofía uñas estética en Sanse: manicura, pedicura, depilación y masajes. Reserva tu cita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#d98a9e;
+    --rose-dark:#b96b81;
+    --blush:#fbeef1;
+    --cream:#fffaf7;
+    --charcoal:#3a2f32;
+    --gold:#c9a15a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 6%;
+    background:rgba(255,250,247,0.85);
+    backdrop-filter:blur(10px);
+    transition:box-shadow .3s;
+  }
+  header.scrolled{box-shadow:0 2px 18px rgba(0,0,0,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--rose-dark);letter-spacing:.5px;}
+  .logo span{color:var(--gold);}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav a{font-size:.92rem;font-weight:500;letter-spacing:.3px;position:relative;}
+  nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--rose);transition:width .3s;}
+  nav a:hover::after{width:100%;}
+  .nav-toggle{display:none;font-size:1.6rem;background:none;border:none;color:var(--rose-dark);cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    height:100vh;min-height:640px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    background:linear-gradient(180deg, rgba(58,47,50,.45), rgba(58,47,50,.6)), url('sofia1.jpg') center/cover no-repeat;
+    text-align:center;
+    color:#fff;
+  }
+  .hero-content{padding:0 20px;max-width:780px;}
+  .hero-content .eyebrow{
+    display:inline-block;letter-spacing:3px;text-transform:uppercase;font-size:.78rem;
+    border:1px solid rgba(255,255,255,.6);padding:6px 18px;border-radius:30px;margin-bottom:22px;
+  }
+  .hero-content h1{font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.1;margin-bottom:18px;}
+  .hero-content h1 em{font-style:italic;color:#f4d8de;}
+  .hero-content p{font-size:1.05rem;font-weight:300;opacity:.92;margin-bottom:34px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--rose);color:#fff;padding:15px 36px;border-radius:40px;
+    font-weight:500;font-size:.95rem;letter-spacing:.3px;
+    box-shadow:0 10px 30px rgba(185,107,129,.4);
+    transition:transform .25s, box-shadow .25s;
+    border:none;cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(185,107,129,.5);}
+  .btn-outline{background:transparent;border:1.5px solid var(--rose);color:var(--rose-dark);box-shadow:none;}
+  .btn-outline:hover{background:var(--rose);color:#fff;}
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    width:26px;height:42px;border:2px solid rgba(255,255,255,.7);border-radius:20px;
+  }
+  .scroll-cue::before{
+    content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+    width:4px;height:8px;background:#fff;border-radius:3px;
+    animation:scrollDown 1.8s infinite;
+  }
+  @keyframes scrollDown{0%{opacity:1;top:8px;}70%{opacity:0;top:22px;}100%{opacity:0;top:8px;}}
+
+  section{padding:110px 6%;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 60px;}
+  .section-head .eyebrow{
+    color:var(--rose-dark);text-transform:uppercase;letter-spacing:3px;font-size:.78rem;font-weight:600;
+  }
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-top:12px;}
+  .section-head p{margin-top:16px;color:#6b5b5f;font-weight:300;line-height:1.7;}
+
+  /* ABOUT */
+  .about{
+    display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+    max-width:1180px;margin:0 auto;padding:110px 6%;
+  }
+  .about-img{position:relative;}
+  .about-img img{border-radius:14px;box-shadow:0 30px 60px -20px rgba(58,47,50,.35);}
+  .about-img .frame{
+    position:absolute;inset:-18px -18px auto auto;top:-18px;right:-18px;
+    width:70%;height:70%;border:2px solid var(--gold);border-radius:14px;z-index:-1;
+  }
+  .about-text .eyebrow{color:var(--rose-dark);text-transform:uppercase;letter-spacing:3px;font-size:.78rem;font-weight:600;}
+  .about-text h2{font-size:clamp(1.9rem,3.6vw,2.5rem);margin:14px 0 20px;}
+  .about-text p{color:#6b5b5f;line-height:1.85;font-weight:300;margin-bottom:16px;}
+  .stats{display:flex;gap:40px;margin-top:34px;}
+  .stat h3{color:var(--rose-dark);font-size:2rem;}
+  .stat span{font-size:.82rem;color:#8a7a7d;letter-spacing:.4px;}
+
+  /* SERVICES */
+  .services{background:var(--blush);}
+  .services-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:28px;max-width:1180px;margin:0 auto;
+  }
+  .service-card{
+    background:#fff;padding:38px 30px;border-radius:16px;text-align:center;
+    box-shadow:0 15px 40px -20px rgba(58,47,50,.15);
+    transition:transform .3s, box-shadow .3s;
+  }
+  .service-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px -20px rgba(185,107,129,.35);}
+  .service-icon{
+    width:64px;height:64px;border-radius:50%;background:var(--blush);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 20px;
+    color:var(--rose-dark);
+  }
+  .service-card h3{font-size:1.15rem;margin-bottom:10px;}
+  .service-card p{font-size:.88rem;color:#8a7a7d;font-weight:300;line-height:1.6;}
+
+  /* GALLERY */
+  .gallery-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;
+  }
+  .gallery-grid figure{
+    border-radius:16px;overflow:hidden;position:relative;
+    box-shadow:0 20px 50px -25px rgba(58,47,50,.4);
+  }
+  .gallery-grid img{height:440px;width:100%;object-fit:cover;transition:transform .6s;}
+  .gallery-grid figure:hover img{transform:scale(1.07);}
+  .gallery-grid figcaption{
+    position:absolute;bottom:0;left:0;right:0;padding:26px 22px;
+    background:linear-gradient(0deg, rgba(0,0,0,.6), transparent);
+    color:#fff;font-size:.95rem;font-weight:500;
+  }
+
+  /* REVIEWS */
+  .reviews{background:var(--charcoal);color:#fff;text-align:center;}
+  .reviews .section-head h2{color:#fff;}
+  .reviews .section-head p{color:#cbb9bd;}
+  .stars{color:var(--gold);font-size:1.3rem;letter-spacing:3px;margin-bottom:16px;}
+  .review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;max-width:1100px;margin:0 auto;}
+  .review-card{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    padding:34px 28px;border-radius:16px;text-align:left;
+  }
+  .review-card p{font-weight:300;line-height:1.75;font-style:italic;color:#eae0e2;font-size:.95rem;}
+  .review-card .stars{font-size:1rem;margin-bottom:14px;}
+
+  /* CONTACT */
+  .contact{
+    background:linear-gradient(135deg, var(--blush), var(--cream));
+    text-align:center;
+  }
+  .contact-box{
+    max-width:600px;margin:0 auto;background:#fff;padding:60px 44px;border-radius:22px;
+    box-shadow:0 30px 70px -30px rgba(58,47,50,.3);
+  }
+  .contact-box h2{font-size:clamp(1.7rem,3.6vw,2.3rem);margin-bottom:16px;}
+  .contact-box p{color:#6b5b5f;font-weight:300;margin-bottom:30px;line-height:1.7;}
+  .info-line{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;color:#6b5b5f;font-size:.95rem;}
+  .info-line svg{flex-shrink:0;color:var(--rose-dark);}
+
+  footer{
+    background:var(--charcoal);color:#cbb9bd;text-align:center;padding:34px 6%;font-size:.85rem;font-weight:300;
+  }
+  footer span{color:var(--gold);}
+
+  /* WHATSAPP FAB */
+  .wa-fab{
+    position:fixed;bottom:26px;right:26px;z-index:200;
+    width:62px;height:62px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 28px rgba(37,211,102,.5);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 10px 28px rgba(37,211,102,.5);}
+    50%{box-shadow:0 10px 28px rgba(37,211,102,.5), 0 0 0 12px rgba(37,211,102,.15);}
+    100%{box-shadow:0 10px 28px rgba(37,211,102,.5);}
+  }
+
+  @media(max-width:860px){
+    .about{grid-template-columns:1fr;}
+    .about-img{order:2;}
+    nav{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:320px;
+      background:var(--cream);flex-direction:column;padding:100px 40px;
+      transform:translateX(100%);transition:transform .4s;box-shadow:-10px 0 40px rgba(0,0,0,.1);}
+    nav.open{transform:translateX(0);}
+    nav ul{flex-direction:column;gap:26px;}
+    .nav-toggle{display:block;}
+    .gallery-grid{grid-template-columns:1fr;}
+    .gallery-grid img{height:320px;}
+    section{padding:80px 6%;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a href="#" class="logo">Salón <span>Sofía</span></a>
+  <nav id="nav">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotras">Nosotras</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle">☰</button>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <span class="eyebrow">San Sebastián de los Reyes</span>
+    <h1>Manos y pies que <em>enamoran</em></h1>
+    <p>Manicura, pedicura, depilación y masaje en un espacio pensado para que te sientas como en casa.</p>
+    <a href="https://wa.me/34604978830?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20Sal%C3%B3n%20Sof%C3%ADa" class="btn" target="_blank" rel="noopener">Reservar por WhatsApp →</a>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<div class="about" id="nosotras">
+  <div class="about-img">
+    <div class="frame"></div>
+    <img src="sofia1.jpg" alt="Fachada de Salón Sofía uñas estética">
+  </div>
+  <div class="about-text">
+    <span class="eyebrow">Nuestra historia</span>
+    <h2>Un rincón de belleza en el corazón de Sanse</h2>
+    <p>En Salón Sofía cuidamos cada detalle para que tu visita sea un momento de calma: manicuras impecables, pedicuras relajantes y tratamientos de estética pensados para ti.</p>
+    <p>Nos encontrarás en la Calle Real, 26 — fácil de llegar, fácil de disfrutar.</p>
+    <div class="stats">
+      <div class="stat"><h3>100+</h3><span>Clientas en Google</span></div>
+      <div class="stat"><h3>4</h3><span>Servicios principales</span></div>
+      <div class="stat"><h3>7</h3><span>Días de atención</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="servicios">
+  <div class="section-head">
+    <span class="eyebrow">Lo que hacemos</span>
+    <h2>Nuestros servicios</h2>
+    <p>Todo lo que necesitas para lucir manos, pies y piel perfectos.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h3>Manicura</h3>
+      <p>Esmaltado semipermanente, gel y diseños personalizados.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </div>
+      <h3>Pedicura</h3>
+      <p>Tratamiento completo de pies con exfoliación y esmaltado.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20"/></svg>
+      </div>
+      <h3>Depilación</h3>
+      <p>Cera profesional, rápida y con el mínimo de molestias.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 4L4 20M4 4l16 16"/></svg>
+      </div>
+      <h3>Masaje</h3>
+      <p>Masajes relajantes para desconectar del día a día.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="section-head">
+    <span class="eyebrow">Conócenos</span>
+    <h2>Nuestro espacio</h2>
+  </div>
+  <div class="gallery-grid">
+    <figure>
+      <img src="sofia1.jpg" alt="Fachada de Salón Sofía">
+      <figcaption>Nuestra fachada en C. Real, 26</figcaption>
+    </figure>
+    <figure>
+      <img src="sofia3.jpg" alt="Interior de Salón Sofía con pared decorativa en forma de corazón">
+      <figcaption>Un espacio pensado para ti</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="reviews" id="opiniones">
+  <div class="section-head">
+    <span class="eyebrow">Google Reviews</span>
+    <h2>Lo que dicen de nosotras</h2>
+    <p>Reseñas reales de nuestras clientas en Google.</p>
+  </div>
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Buen trato, buenos profesionales, rápidos y eficaces."</p>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Me hicieron las uñas de gel tal como las pedí, quedaron perfectas."</p>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Excelente trato y profesionalidad."</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="contact-box">
+    <h2>Reserva tu cita</h2>
+    <p>Escríbenos por WhatsApp y te confirmamos hueco lo antes posible.</p>
+    <div class="info-line">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      C. Real, 26, San Sebastián de los Reyes
+    </div>
+    <div class="info-line">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      604 978 830
+    </div>
+    <a href="https://wa.me/34604978830?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20Sal%C3%B3n%20Sof%C3%ADa" class="btn" target="_blank" rel="noopener" style="margin-top:14px;">Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Salón <span>Sofía</span> Uñas & Estética — San Sebastián de los Reyes
+</footer>
+
+<a class="wa-fab" href="https://wa.me/34604978830?text=Hola%2C%20quiero%20reservar%20una%20cita%20en%20Sal%C3%B3n%20Sof%C3%ADa" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="white"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.702 4.605 1.912 6.472L4 29l7.727-1.878A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.98-1.363l-.357-.212-4.583 1.114 1.15-4.47-.232-.367a9.8 9.8 0 0 1-1.5-5.219c0-5.421 4.412-9.833 9.833-9.833s9.833 4.412 9.833 9.833-4.412 9.833-9.833 9.833zm5.38-7.36c-.294-.148-1.741-.859-2.011-.957-.27-.098-.467-.148-.663.148-.196.294-.76.957-.932 1.153-.172.196-.343.221-.637.074-.294-.148-1.242-.458-2.366-1.462-.874-.78-1.464-1.744-1.636-2.038-.172-.294-.018-.453.13-.6.133-.133.294-.343.441-.515.147-.172.196-.294.294-.49.098-.196.049-.368-.025-.515-.074-.148-.663-1.6-.909-2.19-.24-.575-.484-.497-.663-.506l-.564-.01c-.196 0-.515.074-.784.368-.27.294-1.03 1.007-1.03 2.456s1.055 2.85 1.202 3.046c.147.196 2.077 3.17 5.033 4.445.703.303 1.252.484 1.68.619.706.225 1.348.193 1.855.117.566-.085 1.741-.712 1.987-1.4.245-.688.245-1.278.172-1.4-.074-.123-.27-.196-.564-.344z"/></svg>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+
+</body>
+</html>
